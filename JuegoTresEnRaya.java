@@ -6,12 +6,9 @@ public class JuegoTresEnRaya {
         Random random = new Random();
 
         // Ciclo de juego hasta que haya un ganador o empate
-        while (juego.hayGanador() == TresEnRaya.EstadoCasilla.VACIO && !juego.hayEmpate()) {
+        while (juego.hayGanador() == TresEnRaya.EstadoCasilla.V && !juego.hayEmpate()) {
             // Turno de X (jugador humano)
             if (juego.obtenerTurnoActual() == TresEnRaya.EstadoCasilla.X) {
-                // Ejemplo de entrada manual por consola
-                // Aquí deberías implementar la entrada del usuario o interfaz gráfica
-                // para que el jugador humano pueda elegir la posición
                 int fila, columna;
                 fila = random.nextInt(3);
                 columna = random.nextInt(3);
@@ -36,7 +33,7 @@ public class JuegoTresEnRaya {
 
         // Verificar resultado del juego
         TresEnRaya.EstadoCasilla ganador = juego.hayGanador();
-        if (ganador != TresEnRaya.EstadoCasilla.VACIO) {
+        if (ganador != TresEnRaya.EstadoCasilla.V) {
             System.out.println("¡El jugador " + ganador + " ha ganado!");
         } else {
             System.out.println("¡Es un empate!");

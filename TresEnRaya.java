@@ -1,7 +1,7 @@
 public class TresEnRaya {
     // Enum para representar el estado de cada casilla
     public enum EstadoCasilla {
-        X, O, VACIO
+        X, O, V
     }
 
     private EstadoCasilla[][] tablero; // Tablero del juego
@@ -15,7 +15,7 @@ public class TresEnRaya {
         // Inicializar todas las casillas del tablero como VACIO
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                tablero[i][j] = EstadoCasilla.VACIO;
+                tablero[i][j] = EstadoCasilla.V;
             }
         }
     }
@@ -23,7 +23,7 @@ public class TresEnRaya {
     // Método para realizar un movimiento en el tablero
     public boolean realizarMovimiento(int fila, int columna) {
         // Verificar si la casilla está vacía
-        if (tablero[fila][columna] == EstadoCasilla.VACIO) {
+        if (tablero[fila][columna] == EstadoCasilla.V) {
             // Colocar la marca del jugador actual en la casilla
             tablero[fila][columna] = turnoActual;
 
@@ -45,28 +45,28 @@ public class TresEnRaya {
     public EstadoCasilla hayGanador() {
         // Verificar filas
         for (int i = 0; i < 3; i++) {
-            if (tablero[i][0] != EstadoCasilla.VACIO && tablero[i][0] == tablero[i][1] && tablero[i][0] == tablero[i][2]) {
+            if (tablero[i][0] != EstadoCasilla.V && tablero[i][0] == tablero[i][1] && tablero[i][0] == tablero[i][2]) {
                 return tablero[i][0];
             }
         }
 
         // Verificar columnas
         for (int j = 0; j < 3; j++) {
-            if (tablero[0][j] != EstadoCasilla.VACIO && tablero[0][j] == tablero[1][j] && tablero[0][j] == tablero[2][j]) {
+            if (tablero[0][j] != EstadoCasilla.V && tablero[0][j] == tablero[1][j] && tablero[0][j] == tablero[2][j]) {
                 return tablero[0][j];
             }
         }
 
         // Verificar diagonales
-        if (tablero[0][0] != EstadoCasilla.VACIO && tablero[0][0] == tablero[1][1] && tablero[0][0] == tablero[2][2]) {
+        if (tablero[0][0] != EstadoCasilla.V && tablero[0][0] == tablero[1][1] && tablero[0][0] == tablero[2][2]) {
             return tablero[0][0];
         }
-        if (tablero[0][2] != EstadoCasilla.VACIO && tablero[0][2] == tablero[1][1] && tablero[0][2] == tablero[2][0]) {
+        if (tablero[0][2] != EstadoCasilla.V && tablero[0][2] == tablero[1][1] && tablero[0][2] == tablero[2][0]) {
             return tablero[0][2];
         }
 
         // No hay ganador
-        return EstadoCasilla.VACIO;
+        return EstadoCasilla.V;
     }
 
     // Método para verificar si hay empate
@@ -74,7 +74,7 @@ public class TresEnRaya {
         // Si todas las casillas están llenas y no hay ganador, entonces hay empate
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (tablero[i][j] == EstadoCasilla.VACIO) {
+                if (tablero[i][j] == EstadoCasilla.V) {
                     return false; // Todavía hay casillas vacías
                 }
             }
@@ -89,7 +89,7 @@ public class TresEnRaya {
         turnoActual = EstadoCasilla.X;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                tablero[i][j] = EstadoCasilla.VACIO;
+                tablero[i][j] = EstadoCasilla.V;
             }
         }
     }
