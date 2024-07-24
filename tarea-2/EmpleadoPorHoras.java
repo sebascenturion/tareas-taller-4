@@ -7,8 +7,38 @@ public class EmpleadoPorHoras extends Empleado {
     public EmpleadoPorHoras(String primerNombre, String apellidoPaterno, String numeroSeguroSocial,
                             double sueldo, double horas) {
         super(primerNombre, apellidoPaterno, numeroSeguroSocial);
+        if (sueldo < 0.0) {
+            throw new IllegalArgumentException("El sueldo por hora debe ser >= 0.0");
+        }
+        if (horas < 0.0 || horas > 168.0) {
+            throw new IllegalArgumentException("Las horas trabajadas deben estar entre 0 y 168");
+        }
         this.sueldo = sueldo;
         this.horas = horas;
+    }
+
+    // Métodos establecer y obtener para sueldo
+    public void establecerSueldo(double sueldo) {
+        if (sueldo < 0.0) {
+            throw new IllegalArgumentException("El sueldo por hora debe ser >= 0.0");
+        }
+        this.sueldo = sueldo;
+    }
+
+    public double obtenerSueldo() {
+        return sueldo;
+    }
+
+    // Métodos establecer y obtener para horas
+    public void establecerHoras(double horas) {
+        if (horas < 0.0 || horas > 168.0) {
+            throw new IllegalArgumentException("Las horas trabajadas deben estar entre 0 y 168");
+        }
+        this.horas = horas;
+    }
+
+    public double obtenerHoras() {
+        return horas;
     }
 
     // Implementación del método abstracto ingresos
@@ -25,6 +55,6 @@ public class EmpleadoPorHoras extends Empleado {
     @Override
     public String toString() {
         return String.format("Empleado por horas: %s\n%s: %.2f\n%s: %.2f",
-            super.toString(), "Horas trabajadas", horas, "Sueldo por hora", sueldo);
+            super.toString(), "Horas trabajadas", obtenerHoras(), "Sueldo por hora", obtenerSueldo());
     }
 }
